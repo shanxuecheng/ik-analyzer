@@ -13,14 +13,14 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.apache.lucene.index.Term;
-import org.apache.lucene.queryParser.ParseException;
-import org.apache.lucene.queryParser.QueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TermRangeQuery;
-import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.IKSegmentation;
 import org.wltea.analyzer.Lexeme;
@@ -1151,7 +1151,7 @@ public final class IKQueryParser {
 				throw new IllegalStateException("表达式异常, RangeQuery格式错误");
 			}
 			
-			return new TermRangeQuery(fieldNameEle.toString() , firstValue , lastValue , includeFirst , includeLast);
+			return TermRangeQuery.newStringRange(fieldNameEle.toString() , firstValue , lastValue , includeFirst , includeLast);
 		}
 		
 		/**
