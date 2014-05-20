@@ -41,7 +41,7 @@ public final class IKTokenizer extends Tokenizer {
 	    super(in);
 	    offsetAtt = addAttribute(OffsetAttribute.class);
 	    termAtt = addAttribute(CharTermAttribute.class);
-		_IKImplement = new IKSegmentation(in , isMaxWordLength);
+		_IKImplement = new IKSegmentation(this.input , isMaxWordLength);
 	}	
 	
 	@Override
@@ -68,9 +68,10 @@ public final class IKTokenizer extends Tokenizer {
 	
 	/*
 	 * (non-Javadoc)
-	 * @see org.apache.lucene.analysis.Tokenizer#reset(java.io.Reader)
+	 * @see org.apache.lucene.analysis.Tokenizer#reset()
 	 */
-	public void reset(Reader input) throws IOException {
+	@Override
+	public void reset() throws IOException {
 		super.reset();
 		_IKImplement.reset(input);
 	}	
