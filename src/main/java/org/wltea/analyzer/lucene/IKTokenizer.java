@@ -73,7 +73,7 @@ public final class IKTokenizer extends Tokenizer {
 	@Override
 	public void reset() throws IOException {
 		super.reset();
-		_IKImplement.reset(input);
+		_IKImplement.reset(this.input);
 	}	
 	
 	@Override
